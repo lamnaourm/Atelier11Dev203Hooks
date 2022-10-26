@@ -1,12 +1,22 @@
-import React from 'react';
-import User from './User';
+import React from "react";
+import { useState } from "react";
+import User from "./User";
 
 const ListUser = (props) => {
-    return (
-        <div>
-            {props.users.map(item => <User key={item.id} utilisateur={item}/>)}
-        </div>
-    );
-}
+  const [activeId, setActiveId] = useState(0);
+
+  return (
+    <div>
+      {props.users.map((item) => (
+        <User
+          activeId={activeId}
+          changeActiveId={() => setActiveId(item.id)}
+          key={item.id}
+          utilisateur={item}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default ListUser;
